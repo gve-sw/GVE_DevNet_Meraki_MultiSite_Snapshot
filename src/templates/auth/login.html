@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}<u>User Log-In</u>{% endblock %}</h1>
+  <p>(<b>NOTE</b>: All fields are required!)</p>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+
+    <div class="row dbl-margin-bottom">
+
+      <div class="col-3">
+        <label for="username">Username:</label>
+        <input name="username" id="username" required>
+      </div>
+
+      <div class="col-3">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <input class="btn btn--danger active" type="submit" value="Log-In">
+      </div>
+    </div>
+
+  </form>
+{% endblock %}

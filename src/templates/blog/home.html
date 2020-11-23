@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %}<u>My WinCo Snapshot{% endblock %}</u></h1>
+
+<div class="row base-margin-top">
+    <div class="col-12">
+        <form method="post">
+            <blockquote class="blockquote--danger dbl-padding-left">
+                <div class="row">
+                    <h3><b>Current Organization:</b> {{ org['name'] }} - (id: {{ org['id'] }})</h3>
+                </div>
+
+
+                <div class="row">
+                    {% if recentSnap %}
+                        <h3><u>Most Recent Snapshot:</u></h3>
+
+                        <div class="col-12 panel panel--light panel--well" style="overflow: scroll;">
+                            <table>
+                                <tr>
+                                    {% for pic in recentSnap %}
+                                    <td>
+                                        <label>{{ pic[3] }}</label><br>
+                                        <label>{{ pic[5] }} @ {{ pic[4] }}</label><br>
+                                        <img src="{{ pic[6] }}" style="max-width: 400px; max-height: 400px;"/>
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="row">
+                    <h3><u>Select Sites for Snapshot:</u></h3>
+                </div>
+
+                {% for network in networks %}
+                <div class="row">
+                    <div class="col-6">
+                        <label><input type="checkbox" name="network" value="{{ network['id'] }}">{{ network['name'] }}</label>
+                        <blockquote class="blockquote--dark base-padding-left">
+                            <p>Network Device Summary:  {% for product in network['productTypes'] %} <b> {{ product }}, </b> {% endfor %}</p>
+                        </blockquote>
+                    </div>
+                </div>
+                {% endfor %}
+                <input class="btn btn--danger focus" type="submit" value="Select Cameras">
+            </blockquote>
+        </form>
+    </div>
+</div>
+{% endblock %}

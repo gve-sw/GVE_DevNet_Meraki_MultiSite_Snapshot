@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %}<u>Schedule a Meraki Snapshots{% endblock %}</u></h1>
+
+<div class="row base-margin-top">
+    <div class="col-12">
+        <blockquote class="blockquote--light base-padding-left">
+            <h3><b><u>Currently Scheduled:</u></b></h3>
+            {% for item in schedule %}
+            <div class="row">
+                <p>{{ item }}</p>
+            </div>
+            {% endfor %}
+        </blockquote>
+
+        <form method="post">
+            <blockquote class="blockquote--danger base-padding-left">
+                <div class="row">
+                    <h3><b>Add Scheduling:</b></h3>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p><u>Day of the Week:</u></p>
+                        <label class="base-margin-right">Monday: <input class="checkbox" type="checkbox" name="day" value="Monday"/></label>
+                        <label class="base-margin-right">Tuesday: <input class="checkbox" type="checkbox" name="day" value="Tuesday"/></label>
+                        <label class="base-margin-right">Wednesday: <input class="checkbox" type="checkbox" name="day" value="Wednesday"/></label>
+                        <label class="base-margin-right">Thursday: <input class="checkbox" type="checkbox" name="day" value="Thursday"/></label>
+                        <label class="base-margin-right">Friday: <input class="checkbox" type="checkbox" name="day" value="Friday"/></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="base-margin-right">Saturday: <input class="checkbox" type="checkbox" name="day" value="Saturday"/></label>
+                        <label class="base-margin-right">Sunday: <input class="checkbox" type="checkbox" name="day" value="Sunday"/></label>
+                    </div>
+                </div>
+                <div class="row base-margin-top">
+                    <div class="col-6">
+                        <p><u>Time of Day:</u></p>
+                        <div class="form-group__text">
+                            <label>Time: <input id="scheduledTime" type="time" name="scheduledTime"/></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row base-margin-top">
+                    <div class="col-6">
+                        <p><u>Reoccurrence:</u></p>
+                        <div class="form-group__text">
+                            <label>Repeat <input id="scheduledNumber" type="number" name="scheduledNumber" style="max-width: 50px;"/> time(s)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row base-margin-top">
+                    <input class="btn btn--danger active" type="submit" value="Schedule">
+                </div>
+            </blockquote>
+        </form>
+    </div>
+</div>
+{% endblock %}

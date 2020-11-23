@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %}<u>Take A Snapshot{% endblock %}</u></h1>
+
+<div class="row base-margin-top base-margin-left">
+    <p><b>Organization:</b> {{ org['name'] }} - (id: {{ org['id'] }})</p>
+</div>
+
+<div class="row base-margin-top">
+    <form method="post">
+
+        <div class="col-12">
+            <blockquote class="blockquote--danger base-padding-left">
+                <label class="switch">
+                    Use current local time(s)
+                    <input type="checkbox" name="selectTime" onclick="toggleDateAndTime()">
+                    <span class="switch__input" style="margin: 0 15px;"></span>
+                    Use custom time
+                </label>
+                <div id="SelectDateAndTime" style="display:none;">
+                    <div class="col-8">
+                        <div class="form-group base-margin-bottom">
+                            <div class="form-group__text">
+                                <input id="customDate" name="customDate" type="date">
+                                <label for="customDate">Date</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="form-group base-margin-bottom">
+                            <div class="form-group__text">
+                                <input id="customTime" name="customTime" type="time">
+                                <label for="customTime">Time</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </blockquote>
+        </div>
+
+        <div class="col-12">
+            <blockquote class="blockquote--danger base-padding-left">
+                <div class="row">
+                    <h3><u>Select Cameras:</u></h3>
+                </div>
+                {% for network in networks_with_Devices %}
+                <div class="row">
+                    <div class="col-12">
+                        <h4><b>{{ network['name'] }}</b></h4>
+                        <blockquote class="blockquote--dark dbl-padding-left">
+                            {% for camera in network['cameraList'] %}
+                            <div class="row base-margin-bottom">
+                                <label><input type="checkbox" name="camera" value="{{ camera['serial'] }}"> {{ camera['name'] }}</label>
+                            </div>
+                            {% endfor %}
+                        </blockquote>
+                    </div>
+                </div>
+                {% endfor %}
+                <input class="btn btn--danger active" type="submit" value="Snap!">
+            </blockquote>
+        </div>
+    </form>
+</div>
+{% endblock %}
