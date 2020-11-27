@@ -15,31 +15,36 @@ A Prototype built to leverage Meraki network technology and Meraki Snapshot API 
 ## Installation/Configuration
 Steps needed to install and configure the project's environment
 ```
-1) Clone GitHub Repo
-    * git clone <repoURL>
-2) From Repository, Create Virtual Environment
-    * python3 -m venv venv
-    * source venv/bin/activate
-3) Install Dependancies
-    * pip install -r requirements.txt
-4) Set up Flask Environment
-    * export FLASK_APP=src
-    * export FLASK_ENV=development
+# Create a Virtual Environment
+python3 -m venv Virtual_Environment
+
+# Activate Virtual Environment
+source Virtual_Environment/bin/activate # (MacOS)
+Virtual_Environment/Scripts/activate # (Windows)
+
+# Install Dependencies
+pip install -r requirements.txt
 ```
 
-## Usage
-Steps needed to start the project (<b>Must Complete Installation/Configuration Steps FIRST!</b>)
+## Starting the Application
+Once Dependencies are installed to Environment:
 ```
-1) Initialize Project DB
-    * flask init-db
-2) Initialize Application
-    * flask run
-3) Navigate to URL
-    * http://127.0.0.1:5000/ (by default)
+# Setup Flask application
+export FLASK_APP=src # (MacOS)
+set FLASK_APP=src # (Windows Command Prompt)
+$env:FLASK_APP = "src" # (Windows PowerShell)
+
+# Enable Development Features
+export FLASK_ENV=development
+
+# Start Application
+flask run
 ```
+
+# User Interface
+![/IMAGES/ui.png](IMAGES/ui.png)
 
 # High-Level Diagram
-
 ![/IMAGES/HLD_Multisite_Snap.png](IMAGES/HLD_Multisite_Snap.png)
 
 ### LICENSE

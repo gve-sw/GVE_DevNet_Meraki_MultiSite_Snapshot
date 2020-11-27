@@ -229,7 +229,7 @@ def commitSnap(picture):
     # fullPath = cwd + localPath
     picture['camera'] = picture['camera'].replace(' ', '_')
     localImage = '{}_{}.jpeg'.format(picture['camera'], picture['timestamp'])
-    path = '../Meraki_MultiSite_Snapshot/src/static/img/SnapShots/{}'.format(localImage)
+    path = '../GVE_DevNet_Meraki_MultiSite_Snapshot/src/static/img/SnapShots/{}'.format(localImage)
     localPath = url_for('static', filename='img/SnapShots/{}'.format(localImage))
 
     try:
