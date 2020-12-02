@@ -37,6 +37,9 @@ $env:FLASK_APP = "src" # (Windows PowerShell)
 # Enable Development Features
 export FLASK_ENV=development
 
+# Create Application Database
+flask init-db
+
 # Start Application
 flask run
 ```
